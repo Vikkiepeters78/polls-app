@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About us</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<h1>About us</h1>
+<p>Address:{{address}}</p>
+<p>contact:{{contact}}</p>
+
+<a href="{% url 'polls:home' %}">home page</a>
+<a href="{% url 'polls:contact_us' %}">talk to us</a>
+<img src="{% static 'images/house2.jpg' %}" >
+
+</body>
+</html>

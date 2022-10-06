@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+<h1>welcome to the polls app</h1>
+
+
+{% if questions %}
+    {% for question in questions %}
+    <h2>{{ question.question_text.upper }} | <small>{{ question.pub_date.date }}</small></h2>
+    {% endfor %}
+{% else %}
+<p>no polls available.</p>
+{% endif %}
+
+
+{% if choices %}
+    {% for choice in choices %}
+    <h2>{{ choice.choice_text.upper }} | <small>{{ choice.pub_date.date }}</small></h2>
+    {% endfor %}
+{% else %}
+<p>no polls available.</p>
+{% endif %}
+
+
+<h1>Student Data</h1>
+<div class="list">
+    {% if data%}
+     <table border="1" cellpadding="8px"  >
+        <thead>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>State</th>
+            <th>Age</th>
+        </thead>
+
+         {% for data in data %}
+        <tr>
+            <td>{{data.Name}}</td>
+            <td>{{data.Gender}}</td>
+            <td>{{data.State}}</td>
+            <td>{{data.Age_field}}</td>
+        </tr>
+        {% endfor %}
+    {% else %}
+    <p>cannot display table</p>
+    {% endif %}
+    </table>
+</div>
+<a href="{% url 'polls:about' %} ">about page</a>
+<img src="{% static 'images/house.jpg' %}" alt="">
+
+
+<img src="{% static 'images/library.jpg' %}" >
+</body>
+</html>
